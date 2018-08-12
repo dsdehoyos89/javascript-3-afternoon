@@ -30,7 +30,23 @@
 */
 
 //Code Here
+class Employee {
+  constructor(first_name,last_name,email,age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+  }
+  makeWidget(){
+    return `${this.first_name} ${this.last_name} Widget`;
+  }
+}
 
+
+
+var david = new Employee ('dan','d','sddfsd',29);
+
+david.makeWidget();
 
 
 ////////// PROBLEM 2 //////////
@@ -50,6 +66,24 @@
 */
 
 //Code Here
+
+class Manager extends Employee {
+  constructor(first_name,last_name,email,age){
+    super(first_name,last_name,email,age)
+    
+    this.reports = [];
+  }
+
+  hire(employee){
+    this.reports.push(employee);
+  }
+  fire(index){
+    this.reports.splice(index,1);
+  }
+}
+
+
+var logan = new Manager ('logan','smith','an email',150)
 
 
 
@@ -76,6 +110,30 @@
 */
 
 //Code Here
+
+class ProgressiveManager extends Manager {
+  constructor(first_name,last_name,email,age,reports){
+    super(first_name,last_name,email,age,reports)
+
+    this.reports = [];
+    this.title = 'Not a Manager';
+    this.bonus = 0;
+  }
+  title(employee){
+    if(employee >= 101){
+      return "Bestest Manager"
+
+      }else if (employee >=51){
+        return "Manager Plus"
+      }else if (employee>=11){
+        return "Barely Manager"
+      }else if(employee>=4){
+        return "Mostly manager"
+      }else if (employee>=1){
+        return "Barely Manager"
+      }else return "Not a manager"
+  }
+}
 
 
 
